@@ -1,32 +1,46 @@
-name: Local Deployment Workflow
+name: Deploy Google Play Scraper to Azure Web App
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: scraper    # Replace with your Azure Web App name
+  AZURE_WEBAPP_PACKAGE_PATH: 'dist/'  # Path to your build artifact directory or zip file
+  NODE_VERSION: '18.x'                # Set to the Node.js version you use
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
 
-      - run: npm ci
+    - name: Install dependencies and build
+      run: |
+        npm install
+        npm run build --if-present  # Build the project if applicable
 
-      - run: npm run lint
-      - run: npm test
-      - run: npm audit
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: google-play-scraper-build
+        path: dist/   # Path to your build artifacts
 
-      - name: Run Local Deployment Script
-        run: |
-          echo "Running local deployment script..."
-          ./deploy-local.sh
+    - name: Deploy to Azure WebApp
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
