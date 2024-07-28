@@ -29,17 +29,18 @@ jobs:
     - name: Run lint
       run: npm run lint
 
-    - name: Run tests
+    - name: Change to root directory and run manual tests
       run: |
-      node testApp.mjs &&
-      node testCategories.mjs &&
-      node testDatasafety.mjs &&
-      node testDeveloper.mjs &&
-      node testList.mjs &&
-      node testPermissions.mjs &&
-      node testReviews.mjs &&
-      node testSearch.mjs &&
-      node testSimilar.mjs &&
-      node testSuggest.mjs
+        cd $GITHUB_WORKSPACE &&
+        node testApp.mjs &&
+        node testCategories.mjs &&
+        node testDatasafety.mjs &&
+        node testDeveloper.mjs &&
+        node testList.mjs &&
+        node testPermissions.mjs &&
+        node testReviews.mjs &&
+        node testSearch.mjs &&
+        node testSimilar.mjs &&
+        node testSuggest.mjs
 
 
