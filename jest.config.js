@@ -1,6 +1,8 @@
 module.exports = {
-    transform: {
-      '^.+\\.js$': 'babel-jest',
-    },
-  };
-  
+  transform: {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  transformIgnorePatterns: [
+    "/node_modules/"
+  ]
+};
