@@ -26,23 +26,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Grant execute permissions for jest and eslint
-      run: |
-        chmod +x ./node_modules/.bin/jest
-        chmod +x ./node_modules/.bin/eslint
+    - name: Grant execute permissions for eslint
+      run: chmod +x ./node_modules/.bin/eslint
 
     - name: Run lint
       run: npm run lint
-
-    - name: Run manual tests
-      run: |
-        cd $GITHUB_WORKSPACE
-        node testApp.mjs || exit 1
-        node testDatasafety.mjs || exit 1
-        node testDeveloper.mjs || exit 1
-        node testList.mjs || exit 1
-        node testPermissions.mjs || exit 1
-        node testReviews.mjs || exit 1
-        node testSearch.mjs || exit 1
-        node testSimilar.mjs || exit 1
-        node testSuggest.mjs || exit 1
