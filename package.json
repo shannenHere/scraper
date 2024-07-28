@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "google-play-scraper": "^10.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "jest": "^29.7.0"
   }
 }
