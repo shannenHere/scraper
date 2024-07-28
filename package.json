@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "author": "",
   "license": "ISC",
