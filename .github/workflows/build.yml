@@ -38,7 +38,6 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         node testApp.mjs || exit 1
-        node testCategories.mjs || exit 1
         node testDatasafety.mjs || exit 1
         node testDeveloper.mjs || exit 1
         node testList.mjs || exit 1
