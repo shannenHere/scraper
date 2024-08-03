@@ -8,6 +8,11 @@
     "test": "jest",
     "lint": "eslint . --fix"
   },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.mjs"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
