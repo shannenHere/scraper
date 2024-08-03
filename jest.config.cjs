@@ -1,9 +1,7 @@
 module.exports = {
-    transform: {
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    transformIgnorePatterns: [
-      "/node_modules/"
-    ]
-  };
-
+  testMatch: ['**/tests/**/*.mjs'],
+  testPathIgnorePatterns: ['/node_modules/'],
+  transform: {
+    '^.+\\.mjs$': 'babel-jest',
+  },
+};
