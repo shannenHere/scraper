@@ -5,12 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "jest"  // Add this line
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "eslint": "^8.0.0",
+    "jest": "^27.0.0"  // Add Jest as a dev dependency
   },
   "dependencies": {
     "google-play-scraper": "^10.0.0"
