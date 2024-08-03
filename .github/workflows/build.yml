@@ -29,6 +29,9 @@ jobs:
     - name: Grant execute permissions for eslint
       run: chmod +x ./node_modules/.bin/eslint
 
+    - name: Grant execute permissions for jest
+      run: chmod +x ./node_modules/.bin/jest
+
     - name: Run lint
       run: npm run lint
 
